@@ -12,5 +12,6 @@ RUN set -x \
 ADD docker-entrypoint.sh /
 
 ENV PGDATA /coreroller/data
+
 EXPOSE 5432
 CMD ["/docker-entrypoint.sh"]
