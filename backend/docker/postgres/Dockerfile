@@ -6,14 +6,8 @@ RUN set -x \
     && apk add postgresql postgresql-contrib \
     && curl -o /usr/local/bin/gosu -sSL "https://github.com/tianon/gosu/releases/download/1.9/gosu-amd64" \
     && chmod +x /usr/local/bin/gosu \
-    && cd /tmp \
-    && git clone https://github.com/theory/pg-semver \
-    && cd pg-semver \
-    && git checkout v0.12.0 \
-    && make \
-    && make install \
     && apk del .build-deps \
-    && rm -rf /var/cache/apk /tmp/pg-semver
+    && rm -rf /var/cache/apk
 
 ADD docker-entrypoint.sh /
 
