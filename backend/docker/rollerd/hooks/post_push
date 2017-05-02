@@ -1,9 +1,11 @@
 #!/bin/bash
 set -e
 
+echo "=> Running hooks/post_push for $IMAGE_NAME in branch $SOURCE_BRANCH .."
+
 if [ "$SOURCE_BRANCH" == "v1-prerelease" ]; then
   MASTER_TAG="v1.pre"
   echo "=> Tagging and pushing $IMAGE_NAME as $MASTER_TAG"
-  docker tag -f $IMAGE_NAME $DOCKER_REPO:$MASTER_TAG
+  docker tag $IMAGE_NAME $DOCKER_REPO:$MASTER_TAG
   docker push $DOCKER_REPO:$MASTER_TAG
 fi
