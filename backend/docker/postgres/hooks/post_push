@@ -1,0 +1,9 @@
+#!/bin/bash
+set -e
+
+if [ "$SOURCE_BRANCH" == "master" ]; then
+  MASTER_TAG=v1.x
+  echo "=> Tagging and pushing $IMAGE_NAME as $MASTER_TAG"
+  docker tag -f $IMAGE_NAME $DOCKER_REPO:$MASTER_TAG
+  docker push $DOCKER_REPO:$MASTER_TAG
+fi
